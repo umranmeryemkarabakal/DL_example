@@ -1,0 +1,146 @@
+artifical neural network (ann)
+yapay sinir ağları (ysa)
+
+neuron : nöron
+bir sinir ağındaki temel işlem birimi, sinyalleri işler ve iletir
+synapsis : sinapsis
+nöronlar arasındaki bağlantı noktası, sinyallerin bir nörondan diğerine geçmesini sağlar
+
+
+gradient descent : gradyan iniş
+maliyet fonksiyonunu minimize etmek için ağırlıkların kademeli olarak güncellenmesi sürecidir
+
+stochastic gradient descent SGD : stokastis gradyan inişi
+her veri örneği için ağırlıkların güncellendiği gradyan inişi yöntemidir
+
+Backpropagation : Geri Yayılım
+hataların geri yönde yayılarak ağdaki ağırlıkların güncellenmesini sağlayan öğrenme algoritmasıdır.
+
+neural networkun çalışabilmesi için bağımsız değişken 0-1 aralığında olmalı
+standardize : standartlaştırma kullanılır
+giriş verilerinin 0 ile 1 aralığına getirilmesidir
+
+çıktı, bağımlı değişken 0-1 aralığında,binomial,kategorik olabilir
+tek veya çoklu çıktı (multivariate) oluşturulabilir
+
+nöronda ağırlık iletimi
+nöron üzerindeki sinyal = w1(x1) + w2(x2) + w3(x3)
+nöron üzerindeki aktivasyon = fi[ w1(x1) + w2(x2) + w3(x3) ]
+
+activation function : aktivasyon fonksiyonu
+nörondan gelen sinyali belirli bir değere göre düzenleyen matematiksel fonksiyonlardır
+
+threshold function - step function - adım fonksiyonu
+belirli bir eşiğin üzerine çıkan değerlerin sinyal üretmesini sağlayan fonksiyon
+
+sigmoid function : sigmoid fonksiyonu
+Çıktı değerlerini 0 ile 1 arasına sıkıştırır
+
+rectifier function - düzleştirici fonksiyon
+negatif girişleri sıfıra çeken ve pozitifleri olduğu gibi bırakan aktivasyon fonksiyonu
+
+hyperbolic tangent : hiperbolik tanjant - tanh
+çıktıların -1 ile 1 arasında olmasını sağlar
+
+layer : katman
+sinir ağlarındaki gruplanmış nöronlar
+
+input layer : giriş katmanı
+ağın ilk katmanı, verilerin ağ içine iletildiği yerdir.
+hidden layer : gizli katman
+yükler toplanır ve aktivasyon fonksiyonu uygulanır
+girdi verilerinin işlendiği
+output layer : çıkış katmanı
+sonuç yükleri çıkıştan okunur ve sonuç fonksiyonu uygulanır
+çıkış fonksiyonunda herhangi bir aktivasyon fonksiyonu uygulanabilir
+
+and gate : ve kapısı
+trutly table
+A   B   C
+0   0   0
+0   1   0
+1   0   0
+1   1   1
+
+or gate : veya kapısı
+trutly table
+A   B   C
+0   0   0
+0   1   1
+1   0   1
+1   1   1
+
+xor gate : özel veya kapısı
+trutly table
+A   B   C
+0   0   0
+0   1   1
+1   0   1
+1   1   0
+
+linearly seperable : doğrusal olarak birbirinden ayrıştırılabilen problemler
+Verilerin doğrusal bir ayrım çizgisi ile sınıflara ayrılabildiği durum.
+
+perception : algılayıcı
+yapay sinir ağının öğrenme yöntemi
+bir nöronun belirli bir girdiye tepki verip vermeyeceğini belirleyen model
+
+tahmin gerçekte geri yansıma
+c = 1/2 (gerçek-tahmin)^2
+
+learning rate : öğrenme hızı
+c değerinin sisteme ne kadar geri yansıtılacağını belirler
+learning rate geri çarpan olarak çarpılıp penalty-ceza olarak döner
+ceza sistemlerin kendilerini güncellemesi demektir
+
+gradyan descendent : gradyan alçalışı,inişi
+maliyet fonksiyonunu minimize etmek için ağırlıkları kademeli olarak günceller
+
+big learning rate : büyük öğrenme oranı
+Ağ, hataları büyük adımlarla düzeltilir
+small learning rate : küçük öğrenme oranı
+Ağ, hataları küçük adımlarla düzeltilir ve daha hassas öğrenir
+
+gradyan : türev
+maliyet fonksiyonunun eğimi, ağın öğrenmesi için hangi yönde ilerlemesi gerektiğini gösterir
+
+Local and Global Optima : yerel ve küresel en iyi
+yerel en iyi, maliyet fonksiyonunun yerel minimum noktalarıdır; küresel en iyi ise tüm alanın en düşük noktasıdır
+
+stochastic gradient descendent : stokastik gradyan alçalışı
+her çıktının sonunda alçalt , değiştirme kararı verilir
+
+Batch Gradient Descent : yığın gradyan inişi
+tüm veri kümesi üzerinden ağırlıkların güncellendiği gradyan inişi yöntemidir.
+
+Mini Batch Gradient Descent : Mini Yığın Gradyan İnişi
+sayılı örnekte bir karar verir
+
+
+back propagation : geri yayılım
+hatalar geri yönde yayılır
+
+forward propagation : ileri yayılım
+ağırlıklar ileri yönlü güncellenir
+
+epoch : çağ/tur
+aynı veri üzerinde kaç tur atacağını ve nerede duracağını belirler
+
+1. bütün ağı rasgele sayılarla (sıfıra yakın ama sıfırdan farklı) ilkendir
+2. veri kümesinden ilk satır (her öznitelik bir nöron olacak şekilde) giriş katmanından verilir
+3. ileri yönlü yayılım yapılrak, YSA stenen sonucu verene kadar güncellenir
+4. gerçek ve çıktı arasındaki fark alınarak hata error hesaplanır
+5. geri yayılım her sinapsis üzerindeki ağırlık, hatadan sorumlu olduğu miktarda değiştirilir
+6. adım 1-5 arasındaki adımları istenen sonucu elde edene kadar güncelle (takviyeli öğrenme) veya eldeki bütün verileri ilgili ağda çalıştırıldıktan sonra bir seferde güncelleme yap (yığın öğrenme)
+7. bütün eğitim kümesi çalıştırıldıktan sonra bir çağ/tur epoch tamamlanmış olur. aynı veri kümeleri kullanılarak çağ/tur tekrarları yapılır
+
+
+derin öğrenme kütüphaneleri
+Keras: https://keras.io
+TensorFlow: https://www.tensorflow.org
+Caffe : http://caffe.berkeleyvision.org
+DeepLearning4J : https://deeplearning4j.org
+PyTorch : https://pytorch.org
+
+cpu central processing unit : merkezi işlem birimi
+gpu global photographic union : grafik işleme birimi
